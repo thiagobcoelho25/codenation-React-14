@@ -12,7 +12,8 @@ class App extends React.Component {
     this.state = {
       query: '',
       users: [],
-      sortBy: "name"
+      sortBy: "name",
+      orderBy: "down"
     };
   
   }
@@ -23,7 +24,10 @@ class App extends React.Component {
   
   handleButton = (oB) => {
     this.setState({ sortBy: oB});
+    this.state.sortBy !== oB ? this.setState({orderBy: "down"}) : 
+    this.setState({orderBy: this.state.orderBy === "down" ? "up" : "down"})
   }
+
 
   componentDidMount() {
     /*fetch("https://5e82ac6c78337f00160ae496.mockapi.io/api/v1/contacts")
@@ -46,7 +50,8 @@ class App extends React.Component {
         <Topbar />
         <Filters  onSortByChange={this.handleButton}
                   onFilterTextChange={this.handleQuery}
-                  sortBy={this.state.sortBy}/>
+                  sortBy={this.state.sortBy}
+                  orderBy={this.state.orderBy}/>
         <Contacts data={this.state} />
       </div>
     )

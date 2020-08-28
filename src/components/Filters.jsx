@@ -5,7 +5,7 @@ class Filters extends React.Component {
 
 	render() {
 		const sortBy = this.props.sortBy;
-		//const orderBy = this.props.orderBy;
+		const orderBy = this.props.orderBy;
 
 		return (<div className="container" data-testid="filters">
 			<section className="filters">
@@ -22,8 +22,9 @@ class Filters extends React.Component {
 					name="name"
 					onClick={(e) => this.props.onSortByChange(e.target.name)}
 				>
-					Nome <i className={`fas fa-sort-down`} 
-					onClick={(e) => {e.stopPropagation()}} />
+					Nome <i className={`fas fa-sort-${sortBy === "name" ? orderBy : "down"}`} 
+					onClick={(e) => {
+						e.stopPropagation()}} />
 				</button>
 
 				<button
@@ -31,7 +32,7 @@ class Filters extends React.Component {
 					name="country"
 					onClick={(e) => this.props.onSortByChange(e.target.name)}
 				>
-					País <i className={"fas fa-sort-down"}
+					País <i className={`fas fa-sort-${sortBy === "country" ? orderBy : "down"}`}
 					onClick={(e) => {e.stopPropagation()}} />
 				</button>
 
@@ -40,7 +41,8 @@ class Filters extends React.Component {
 					name="company"
 					onClick={(e) => this.props.onSortByChange(e.target.name)}
 				>
-					Empresa <i className="fas fa-sort-down" onClick={(e) => {e.stopPropagation()}} />
+					Empresa <i className={`fas fa-sort-${sortBy === "company" ? orderBy : "down"}`} 
+					onClick={(e) => {e.stopPropagation()}} />
 				</button>
 
 				<button
@@ -48,7 +50,8 @@ class Filters extends React.Component {
 					name="department"
 					onClick={(e) => this.props.onSortByChange(e.target.name)}
 				>
-					Departamento <i className="fas fa-sort-down" onClick={(e) => {e.stopPropagation()}} />
+					Departamento <i className={`fas fa-sort-${sortBy === "department" ? orderBy : "down"}`}
+					onClick={(e) => {e.stopPropagation()}} />
 				</button>
 
 				<button
@@ -56,7 +59,8 @@ class Filters extends React.Component {
 					name="admissionDate"
 					onClick={(e) => this.props.onSortByChange(e.target.name)}
 				>
-					Data de admissão <i className="fas fa-sort-down" onClick={(e) => {e.stopPropagation()}} />
+					Data de admissão <i className={`fas fa-sort-${sortBy === "admissionDate" ? orderBy : "down"}`}
+					onClick={(e) => {e.stopPropagation()}} />
 				</button>
 				
 			</section>

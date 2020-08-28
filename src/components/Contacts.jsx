@@ -6,6 +6,7 @@ import Contact from "./Contact";
 
 const Contacts = ({data}) => (
 
+  
   <div className="container" data-testid="contacts">
 
     <section className="contacts">
@@ -31,13 +32,17 @@ const Contacts = ({data}) => (
       {data.users === undefined ? '--' :
         data.users.filter((usr) => usr[data.sortBy].toLowerCase().includes(data.query.toLowerCase()))
           .sort(function (a, b) {
-            if (a[data.sortBy] > b[data.sortBy]) {
+           if(data.orderBy === "down") return a[data.sortBy] > b[data.sortBy] ? 1 : -1
+           else return a[data.sortBy] < b[data.sortBy] ? 1 : -1
+           //a[data.sortBy] > b[data.sortBy] ? 1 : a[data.sortBy] < b[data.sortBy] ? -1 : 0
+            
+            /*if (a[data.sortBy] > b[data.sortBy]) {
               return 1;
             }
             if (a[data.sortBy] < b[data.sortBy]) {
               return -1;
             }
-            return 0;
+            return 0;*/
           }).map(usr => (
             <Contact key={usr.id} data={usr} />
           ))
@@ -46,7 +51,6 @@ const Contacts = ({data}) => (
     </section>
 
   </div>
-
 );
 
 
