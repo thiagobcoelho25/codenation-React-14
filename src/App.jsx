@@ -24,10 +24,10 @@ class App extends React.Component {
   
   handleButton = (oB) => {
     this.setState({ sortBy: oB});
-    this.state.sortBy !== oB ? this.setState({orderBy: "down"}) : 
-    this.setState({orderBy: this.state.orderBy === "down" ? "up" : "down"})
+    this.setState((state) => ({
+      orderBy: this.state.sortBy !== oB ? "down" : this.state.orderBy === "down" ? "up" : "down"
+    }))
   }
-
 
   componentDidMount() {
     /*fetch("https://5e82ac6c78337f00160ae496.mockapi.io/api/v1/contacts")
